@@ -1,6 +1,6 @@
 {
-  "name": "egui Template PWA",
-  "short_name": "egui-template-pwa",
+  "name": "egui Dark Souls",
+  "short_name": "egui_ds-pwa",
   "icons": [
     {
       "src": "./icon-256.png",
