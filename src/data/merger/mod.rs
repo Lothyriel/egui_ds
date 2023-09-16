@@ -61,11 +61,15 @@ mod tests {
 
         assert_eq!(merged_weapons.len(), 101);
 
-        let murakumo = merged_weapons.get("Murakumo").unwrap();
+        let murakumo = merged_weapons
+            .get("Murakumo")
+            .expect("Murakumo should be here");
 
         assert!(murakumo.len() == 10);
 
-        let nito_sword = merged_weapons.get("Gravelord Sword").unwrap();
+        let nito_sword = merged_weapons
+            .get("Gravelord Sword")
+            .expect("Gravelord Sword should be here");
 
         assert!(nito_sword.len() == 1);
 
