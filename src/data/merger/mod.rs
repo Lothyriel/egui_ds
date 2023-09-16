@@ -59,12 +59,6 @@ mod tests {
             },
         );
 
-        std::fs::write(
-            "output.json",
-            serde_json::to_string(&merged_weapons).unwrap(),
-        )
-        .unwrap();
-
         assert_eq!(merged_weapons.len(), 101);
 
         let murakumo = merged_weapons.get("Murakumo").unwrap();
@@ -75,12 +69,16 @@ mod tests {
 
         assert!(nito_sword.len() == 1);
 
-        let a: Vec<_> = merged_weapons
+        let outliars: Vec<_> = merged_weapons
             .iter()
             .filter(|(_, v)| v.len() != 1 && v.len() != 10)
             .collect();
 
-        std::fs::write("output2.json", serde_json::to_string(&a).unwrap()).unwrap();
+        std::fs::write(
+            "output_outliars.json",
+            serde_json::to_string(&outliars).unwrap(),
+        )
+        .unwrap();
 
         Ok(())
     }
