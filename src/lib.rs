@@ -1,4 +1,4 @@
 mod app;
-pub mod scraper;
+pub mod data;
 
 pub use app::App;
