@@ -12,13 +12,13 @@ pub enum Type {
     Special(OffensiveStats),
 }
 
-#[derive(serde::Serialize, Debug, Default)]
+#[derive(serde::Serialize, Debug, Default, Eq, PartialEq)]
 pub struct OffensiveStats {
     pub dmg: Damage,
     pub scaling: Scaling,
 }
 
-#[derive(serde::Serialize, Debug, Default)]
+#[derive(serde::Serialize, Debug, Default, Eq, PartialEq)]
 pub struct Damage {
     pub physical: u16,
     pub magic: u16,
@@ -26,7 +26,7 @@ pub struct Damage {
     pub lightning: u16,
 }
 
-#[derive(serde::Serialize, Debug, Default)]
+#[derive(serde::Serialize, Debug, Default, Eq, PartialEq)]
 pub struct Scaling {
     pub str: u8,
     pub dex: u8,
@@ -34,7 +34,7 @@ pub struct Scaling {
     pub faith: u8,
 }
 
-#[derive(serde::Serialize, Debug)]
+#[derive(serde::Serialize, Debug, Eq, PartialEq)]
 pub struct Defense {
     pub physical: u8,
     pub magic: u8,
