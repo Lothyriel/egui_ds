@@ -6,9 +6,7 @@ use super::model::{Defense, OffensiveStats};
 
 #[cfg(test)]
 mod tests {
-    use std::collections::HashMap;
-
-    use super::{web_scraper::scrape_data, MergingError, ScrapingError};
+    use super::{web_scraper::scrape_data, ScrapingError};
 
     #[test]
     fn should_get_data() -> Result<(), ScrapingError> {
@@ -20,7 +18,7 @@ mod tests {
     }
 }
 
-#[derive(serde::Serialize, Debug)]
+#[derive(serde::Serialize, Debug, Eq, PartialEq)]
 pub struct ScrapedEntry {
     pub name: String,
     pub stats: OffensiveStats,
@@ -32,14 +30,6 @@ pub struct ScrapedEntry {
 pub enum GetDataError {
     #[error("{0}")]
     ScrapingError(#[from] ScrapingError),
-    #[error("{0}")]
-    MergingError(#[from] MergingError),
-}
-
-#[derive(thiserror::Error, Debug)]
-pub enum MergingError {
-    #[error("Weapon name was empty")]
-    WeaponNameEmpty,
 }
 
 #[derive(thiserror::Error, Debug)]
