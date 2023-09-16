@@ -53,7 +53,11 @@ mod tests {
         let merged_weapons = data.into_iter().map(|w| (get_key(&w.name), w)).fold(
             HashMap::new(),
             |mut acc, (k, v)| {
-                acc.entry(k).or_insert(vec![]).push(v);
+                let vec = acc.entry(k).or_insert(vec![]);
+
+                if !vec.contains(&v) {
+                    vec.push(v);
+                }
 
                 acc
             },
